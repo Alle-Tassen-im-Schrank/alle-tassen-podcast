@@ -95,9 +95,11 @@ const HeroSection = () => {
               <Play className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
               Jetzt reinhören
             </Button>
-            <Button size="lg" variant="outline" className="group">
-              <Headphones className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
-              Podcast abonnieren
+            <Button size="lg" variant="outline" className="group" asChild>
+              <a href="#subscribe">
+                <Headphones className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
+                Podcast abonnieren
+              </a>
             </Button>
           </motion.div>
         </div>
