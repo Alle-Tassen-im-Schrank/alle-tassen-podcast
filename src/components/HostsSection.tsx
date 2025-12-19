@@ -1,16 +1,20 @@
 import { motion } from "framer-motion";
 import CupIcon from "./CupIcon";
+import chrisBurger from "@/assets/chris-burger.jpg";
+import benjaminWennek from "@/assets/benjamin-wennek.jpg";
 
 const hosts = [
   {
     name: "Chris Burger",
     role: "Host",
+    image: chrisBurger,
     description:
       "Chris bringt seine einzigartige Perspektive und jahrelange Erfahrung als neurodivergenter Unternehmer in jedes Gespräch ein.",
   },
   {
     name: "Benjamin Wennek",
     role: "Host",
+    image: benjaminWennek,
     description:
       "Benjamin sorgt mit seinem analytischen Blick und seiner Empathie für tiefgehende und authentische Gespräche.",
   },
@@ -56,10 +60,14 @@ const HostsSection = () => {
               transition={{ duration: 0.8, delay: index * 0.2 }}
               className="bg-card rounded-2xl p-8 shadow-soft hover:shadow-medium transition-all duration-300 group"
             >
-              {/* Avatar placeholder with cup */}
+              {/* Host photo */}
               <div className="flex items-center gap-6 mb-6">
-                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
-                  <CupIcon size="sm" variant="steam" />
+                <div className="w-24 h-24 rounded-full overflow-hidden ring-4 ring-primary/20 group-hover:ring-primary/40 transition-all duration-300 group-hover:scale-105">
+                  <img 
+                    src={host.image} 
+                    alt={host.name}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <div>
                   <h3 className="font-display text-2xl font-semibold text-foreground">
