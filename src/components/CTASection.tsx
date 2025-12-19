@@ -4,10 +4,10 @@ import CupIcon from "./CupIcon";
 import { Apple, Headphones, Youtube } from "lucide-react";
 
 const platforms = [
-  { name: "Apple Podcasts", icon: Apple },
-  { name: "Spotify", icon: Headphones },
-  { name: "YouTube", icon: Youtube },
-  { name: "Podigee", icon: Headphones },
+  { name: "Apple Podcasts", icon: Apple, url: "#" },
+  { name: "Spotify", icon: Headphones, url: "#" },
+  { name: "YouTube", icon: Youtube, url: "#" },
+  { name: "Podigee", icon: Headphones, url: "https://alle-tassen-im-schrank.podigee.io/" },
 ];
 
 const CTASection = () => {
@@ -65,9 +65,19 @@ const CTASection = () => {
                 variant="secondary"
                 size="lg"
                 className="bg-primary-foreground/10 hover:bg-primary-foreground/20 text-primary-foreground border border-primary-foreground/20 group"
+                asChild={platform.url !== "#"}
               >
-                <platform.icon className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
-                {platform.name}
+                {platform.url !== "#" ? (
+                  <a href={platform.url} target="_blank" rel="noopener noreferrer">
+                    <platform.icon className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
+                    {platform.name}
+                  </a>
+                ) : (
+                  <>
+                    <platform.icon className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
+                    {platform.name}
+                  </>
+                )}
               </Button>
             ))}
           </div>
