@@ -6,14 +6,14 @@ import benjaminWennek from "@/assets/benjamin-wennek.jpg";
 const hosts = [
   {
     name: "Chris Burger",
-    role: "Host",
+    role: "Co-Host",
     image: chrisBurger,
     description:
       "Chris bringt seine einzigartige Perspektive und jahrelange Erfahrung als neurodivergenter Unternehmer in jedes Gespräch ein.",
   },
   {
     name: "Benjamin Wennek",
-    role: "Host",
+    role: "Co-Host",
     image: benjaminWennek,
     description:
       "Benjamin sorgt mit seinem analytischen Blick und seiner Empathie für tiefgehende und authentische Gespräche.",
