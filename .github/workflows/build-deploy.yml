@@ -1,0 +1,41 @@
+name: Build static site (Vite) and publish deploy branch
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Publish dist to deploy branch
+        run: |
+          rm -rf /tmp/deploy
+          mkdir -p /tmp/deploy
+          cp -R dist/* /tmp/deploy/
+          cd /tmp/deploy
+          git init
+          git checkout -b deploy
+          git add -A
+          git -c user.name="github-actions" -c user.email="actions@github.com" commit -m "Deploy"
+          git remote add origin "https://github.com/Alle-Tassen-im-Schrank/alle-tassen-podcast.git"
+          git push --force origin deploy
