@@ -7,11 +7,12 @@ const platforms = [
   { name: "Apple Podcasts", icon: Apple },
   { name: "Spotify", icon: Headphones },
   { name: "YouTube", icon: Youtube },
+  { name: "Podigee", icon: Headphones },
 ];
 
 const CTASection = () => {
   return (
-    <section className="py-24 bg-cup-deep-blue text-primary-foreground relative overflow-hidden">
+    <section id="subscribe" className="py-24 bg-cup-deep-blue text-primary-foreground relative overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute inset-0 opacity-10">
         <motion.div
