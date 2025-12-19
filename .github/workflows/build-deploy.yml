@@ -28,14 +28,23 @@ jobs:
         run: npm run build
 
       - name: Publish dist to deploy branch
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          set -e
+
+          REPO="Alle-Tassen-im-Schrank/alle-tassen-podcast"
+
           rm -rf /tmp/deploy
           mkdir -p /tmp/deploy
           cp -R dist/* /tmp/deploy/
           cd /tmp/deploy
+
           git init
           git checkout -b deploy
           git add -A
           git -c user.name="github-actions" -c user.email="actions@github.com" commit -m "Deploy"
-          git remote add origin "https://github.com/Alle-Tassen-im-Schrank/alle-tassen-podcast.git"
+
+          git remote add origin "https://x-access-token:${GH_TOKEN}@github.com/${REPO}.git"
           git push --force origin deploy
+
